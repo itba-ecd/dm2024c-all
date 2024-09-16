@@ -1,5 +1,5 @@
 # esqueleto de grid search con Montecarlo Cross Validation
-# completado para recorrer TODOS los hiperparámetros
+# con menos iteraciones para reducir tiempo de ejecución
 
 rm(list = ls()) # Borro todos los objetos
 gc() # Garbage Collection
@@ -11,8 +11,8 @@ require("primes")
 
 PARAM <- list()
 # reemplazar por su primer semilla
-PARAM$semilla_primigenia <- 100019
-PARAM$qsemillas <- 20
+PARAM$semilla_primigenia <- 102191
+PARAM$qsemillas <- 5  # Reducimos la cantidad de semillas
 
 PARAM$training_pct <- 70L  # entre  1L y 99L 
 
@@ -141,10 +141,11 @@ tb_grid_search_detalle <- data.table(
 
 # itero por los loops anidados para cada hiperparametro
 
-for (vcp in c(0.01, 0.005, 0.001, 0.0005)) {   # loop para cp
-  for (vmax_depth in c(6, 8, 10, 12, 14)) {   # loop para maxdepth
-    for (vmin_split in c(1000, 800, 600, 400, 200)) {   # loop para minsplit
-      for (vmin_bucket in c(5, 10, 20, 30, 50)) {   # loop para minbucket
+# Valores reducidos para cp, maxdepth, minsplit, minbucket
+for (vcp in c(0.01, 0.005)) {   # Reducido a 2 valores de cp
+  for (vmax_depth in c(6, 10)) {   # Reducido a 2 valores de maxdepth
+    for (vmin_split in c(200, 50)) {   # Reducido a 2 valores de minsplit
+      for (vmin_bucket in c(10, 30)) {   # Reducido a 2 valores de minbucket
         # param_basicos contiene la combinacion actual de hiperparámetros
         param_basicos <- list(
           "cp" = vcp,                # complejidad mínima
@@ -166,7 +167,7 @@ for (vcp in c(0.01, 0.005, 0.001, 0.0005)) {   # loop para cp
     }
   }
   
-  # grabo cada vez TODA la tabla en el loop mas externo
+  # grabo cada vez TODA la tabla en el loop más externo
   fwrite( tb_grid_search_detalle,
           file = "gridsearch_detalle.txt",
           sep = "\t" )
