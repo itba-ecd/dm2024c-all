@@ -19,7 +19,7 @@ require("ggplot2")
 # cambiar aqui los parametros
 PARAM <- list()
 PARAM$minsplit <- 20000 #profundidad del arbol
-PARAM$minbucket <- 1000 
+PARAM$minbucket <- 10000 
 PARAM$maxdepth <- 3
 
 #------------------------------------------------------------------------------
