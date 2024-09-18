@@ -144,7 +144,8 @@ tb_grid_search_detalle <- data.table(
 
 for (cp in c( -1,-0.9,-0.8,-0.7,-0.6,-0.5)){  # complejidad minima
 for (vmax_depth in c(4, 6, 8, 10, 12, 20)) {
-  for (vmin_split in c(7000, 800, 600, 400, 200, 100, 50, 20)) {
+  for (vmin_split in c(1000, 800, 600, 400, 200, 100, 50, 20)) {
+    for (minbucket in c( vmin_split/3,vmin_split/4,2,5)){
     # notar como se agrega
 
     # vminsplit  minima cantidad de registros en un nodo para hacer el split
@@ -152,7 +153,7 @@ for (vmax_depth in c(4, 6, 8, 10, 12, 20)) {
       "cp" = cp,
       "maxdepth" = vmax_depth, # profundidad máxima del arbol
       "minsplit" = vmin_split, # tamaño minimo de nodo para hacer split
-      "minbucket" = 5 # minima cantidad de registros en una hoja
+      "minbucket" = minbucket # minima cantidad de registros en una hoja
     )
 
     # Un solo llamado, con la semilla 17
@@ -165,10 +166,10 @@ for (vmax_depth in c(4, 6, 8, 10, 12, 20)) {
     )
 
   }
-
+}
   # grabo cada vez TODA la tabla en el loop mas externo
   fwrite( tb_grid_search_detalle,
-          file = "gridsearch_detalle1.txt",
+          file = "gridsearch_detalle2.txt",
           sep = "\t" )
 }
 }
@@ -188,7 +189,7 @@ setorder( tb_grid_search, -ganancia_mean )
 tb_grid_search[, id := .I ]
 
 fwrite( tb_grid_search,
-  file = "gridsearch1.txt",
+  file = "gridsearch2.txt",
   sep = "\t"
 )
 
