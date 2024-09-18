@@ -142,10 +142,10 @@ tb_grid_search_detalle <- data.table(
 
 # itero por los loops anidados para cada hiperparametro
 
-for (cp in c( -1,-0.9,-0.8,-0.7,-0.6,-0.5)){  # complejidad minima
-for (vmax_depth in c(4, 6, 8, 10, 12, 20)) {
-  for (vmin_split in c(1000, 800, 600, 400, 200, 100, 50, 20)) {
-    for (minbucket in c( vmin_split/3,vmin_split/4,2,5)){
+for (cp in c( -1,-0.9,-0.5)){  # complejidad minima
+for (vmax_depth in c(3, 6, 9, 12, 18)) {
+  for (vmin_split in c(6000, 5000, 4000, 3000)) {
+    for (minbucket in c( vmin_split/3,vmin_split/4,500,50,5)){
     # notar como se agrega
 
     # vminsplit  minima cantidad de registros en un nodo para hacer el split
@@ -169,7 +169,7 @@ for (vmax_depth in c(4, 6, 8, 10, 12, 20)) {
 }
   # grabo cada vez TODA la tabla en el loop mas externo
   fwrite( tb_grid_search_detalle,
-          file = "gridsearch_detalle2.txt",
+          file = "gridsearch_detalle5.txt",
           sep = "\t" )
 }
 }
@@ -189,7 +189,7 @@ setorder( tb_grid_search, -ganancia_mean )
 tb_grid_search[, id := .I ]
 
 fwrite( tb_grid_search,
-  file = "gridsearch2.txt",
+  file = "gridsearch5.txt",
   sep = "\t"
 )
 
