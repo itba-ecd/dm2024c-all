@@ -144,8 +144,8 @@ tb_grid_search_detalle <- data.table(
 
 for (vmax_depth in c(3, 6, 12, 18)) {
   for (vmin_split in c(1000, 800, 600, 400, 200)) {
-    for (cp_valor in c(-0.5, -1)) {
-      for (minbucket_valor in c(100,200)) {
+    for (cp_valor in c(-1)) {
+      for (minbucket_valor in c(200)) {
         
       }
       
