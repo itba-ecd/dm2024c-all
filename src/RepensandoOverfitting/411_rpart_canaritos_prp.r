@@ -30,9 +30,9 @@ for( i in 1:154 ) dataset[ , paste0("canarito", i ) :=  runif( nrow(dataset)) ]
                model = TRUE,
                xval = 0,
                cp = -1,
-               minsplit =  1000,
-               minbucket = 2,
-               maxdepth = 4 )
+               minsplit =  52,
+               minbucket = 14,
+               maxdepth = 6 )
 
 
 pdf(file = "./arbol_canaritos.pdf", width=28, height=4)
