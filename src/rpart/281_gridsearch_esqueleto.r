@@ -12,7 +12,7 @@ require("primes")
 
 PARAM <- list()
 # reemplazar por su primer semilla
-PARAM$semilla_primigenia <- 102191
+PARAM$semilla_primigenia <- 177799
 PARAM$qsemillas <- 20
 
 PARAM$training_pct <- 70L  # entre  1L y 99L 
@@ -143,7 +143,7 @@ tb_grid_search_detalle <- data.table(
 # itero por los loops anidados para cada hiperparametro
 
 for (cp in c( -1,-0.9,-0.5)){  # complejidad minima
-for (vmax_depth in c(3, 6, 9, 12, 18)) {
+for (vmax_depth in c(3, 6, 12, 18)) {
   for (vmin_split in c(6000, 5000, 4000, 3000)) {
     for (minbucket in c( vmin_split/3,vmin_split/4,500,50,5)){
     # notar como se agrega
@@ -169,7 +169,7 @@ for (vmax_depth in c(3, 6, 9, 12, 18)) {
 }
   # grabo cada vez TODA la tabla en el loop mas externo
   fwrite( tb_grid_search_detalle,
-          file = "gridsearch_detalle5.txt",
+          file = "gridsearch_detalle6.txt",
           sep = "\t" )
 }
 }
@@ -189,7 +189,7 @@ setorder( tb_grid_search, -ganancia_mean )
 tb_grid_search[, id := .I ]
 
 fwrite( tb_grid_search,
-  file = "gridsearch5.txt",
+  file = "gridsearch6.txt",
   sep = "\t"
 )
 
