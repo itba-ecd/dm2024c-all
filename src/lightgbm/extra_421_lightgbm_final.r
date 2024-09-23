@@ -17,17 +17,17 @@ PARAM$input$training <- c(202107) # meses donde se entrena el modelo
 PARAM$input$future <- c(202109) # meses donde se aplica el modelo
 
 
-PARAM$finalmodel$num_iterations <- 
-PARAM$finalmodel$learning_rate <- 
-PARAM$finalmodel$feature_fraction <- 
-PARAM$finalmodel$min_data_in_leaf <- 
-PARAM$finalmodel$num_leaves <- 
-PARAM$finalmodel$max_bin <- 
-PARAM$finalmodel$lambda_l1 <- 
-PARAM$finalmodel$lambda_l2 <- 
-PARAM$finalmodel$min_gain_to_split <-
-PARAM$finalmodel$bagging_fraction <-
-PARAM$finalmodel$bagging_freq <-
+PARAM$finalmodel$num_iterations <- 71
+PARAM$finalmodel$learning_rate <- 0.129974595057797
+PARAM$finalmodel$feature_fraction <- 0.230014616398755
+PARAM$finalmodel$min_data_in_leaf <- 4039
+PARAM$finalmodel$num_leaves <- 159
+PARAM$finalmodel$max_bin <- 31
+PARAM$finalmodel$lambda_l1 <- 0.926570008061269
+PARAM$finalmodel$lambda_l2 <- 20.4754568528399
+PARAM$finalmodel$min_gain_to_split <- 1.50256552040948
+PARAM$finalmodel$bagging_fraction <- 0.841855477666503
+PARAM$finalmodel$bagging_freq <- 10
 
 # Hiperparámetros adicionales recomendados
 # Profundidad máxima de los árboles
