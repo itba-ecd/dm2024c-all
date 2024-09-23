@@ -33,7 +33,7 @@ options(error = function() {
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM <- list()
 
-PARAM$experimento <- "HT4220"
+PARAM$experimento <- "HT4220_5"
 
 PARAM$input$training <- c(202107) # los meses en los que vamos a entrenar
 
@@ -54,12 +54,12 @@ hs <- makeParamSet(
   makeIntegerParam("num_leaves", lower = 8L, upper = 1024L),
   makeNumericParam("feature_fraction", lower = 0.1, upper = 1.0),
   makeIntegerParam("min_data_in_leaf", lower = 1L, upper = 8000L),
-  makeIntegerParam("envios", lower = 5000L, upper = 15000L), # Suponiendo que "envios" corresponde a "n_estimators"
+  makeIntegerParam("envios", lower = 0L, upper = 5000L), # Suponiendo que "envios" corresponde a "n_estimators"
   
   # Hiperparámetros adicionales recomendados
-  makeIntegerParam("max_depth", lower = -1L, upper = 50L),          # Profundidad máxima de los árboles
-  makeNumericParam("lambda_l1", lower = 0.0, upper = 5.0),          # Regularización L1
-  makeNumericParam("lambda_l2", lower = 0.0, upper = 5.0),          # Regularización L2
+           # Profundidad máxima de los árboles
+  makeNumericParam("lambda_l1", lower = 0.0, upper = 1000),          # Regularización L1
+  makeNumericParam("lambda_l2", lower = 0.0, upper = 1000),          # Regularización L2
   makeNumericParam("min_gain_to_split", lower = 0.0, upper = 15.0), # Ganancia mínima para una partición
   makeNumericParam("bagging_fraction", lower = 0.5, upper = 1.0),   # Fracción de datos para cada iteración de bagging
   makeIntegerParam("bagging_freq", lower = 1L, upper = 10L)         # Frecuencia de bagging

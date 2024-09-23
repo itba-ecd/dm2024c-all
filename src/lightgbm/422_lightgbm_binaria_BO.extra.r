@@ -33,7 +33,7 @@ options(error = function() {
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM <- list()
 
-PARAM$experimento <- "HT4220"
+PARAM$experimento <- "HT4220_3"
 
 PARAM$input$training <- c(202107) # los meses en los que vamos a entrenar
 
@@ -57,7 +57,6 @@ hs <- makeParamSet(
   makeIntegerParam("envios", lower = 0L, upper = 5000L),            # Número de iteraciones/envíos
   
   # Hiperparámetros adicionales
-  makeIntegerParam("max_depth", lower = -1L, upper = 50L),              # Profundidad máxima de los árboles
   makeNumericParam("lambda_l1", lower = 0.0, upper = 1000),              # Regularización L1
   makeNumericParam("lambda_l2", lower = 0.0, upper = 1000),              # Regularización L2
   makeNumericParam("min_gain_to_split", lower = 0.0, upper = 15.0),     # Ganancia mínima para una partición
