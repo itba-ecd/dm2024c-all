@@ -62,7 +62,8 @@ hs <- makeParamSet(
   makeNumericParam("bagging_fraction", lower = 0.4, upper = 1.0),
   makeIntegerParam("bagging_freq", lower = 1L, upper = 10L),
   makeNumericParam("lambda_l1", lower = 0.0, upper = 1.0),
-  makeNumericParam("lambda_l2", lower = 0.0, upper = 1.0)
+  makeNumericParam("lambda_l2", lower = 0.0, upper = 1.0),
+  makeDiscreteParam("boosting_type", values = c("gbdt", "dart", "goss"))
 )
 
 #------------------------------------------------------------------------------
