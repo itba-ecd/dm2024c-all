@@ -41,7 +41,7 @@ PARAM$input$training <- c(202107) # los meses en los que vamos a entrenar
 # undersampling de 1.0  implica tomar TODOS los datos
 PARAM$trainingstrategy$undersampling <- 1.0
 
-PARAM$hyperparametertuning$iteraciones <- 150
+PARAM$hyperparametertuning$iteraciones <- 1500 #por tener varios hipermaparetros tiene que ser mas grando de 150
 PARAM$hyperparametertuning$xval_folds <- 5
 PARAM$hyperparametertuning$POS_ganancia <- 117000
 PARAM$hyperparametertuning$NEG_ganancia <- -3000
@@ -50,19 +50,19 @@ PARAM$hyperparametertuning$NEG_ganancia <- -3000
 
 # Aqui se cargan los bordes de los hiperparametros
 hs <- makeParamSet(
-  makeNumericParam("learning_rate", lower = 0.1, upper = 0.3),
+  makeNumericParam("learning_rate", lower = 0.01, upper = 0.3),
   makeIntegerParam("num_leaves", lower = 64L, upper = 1024L),
   makeNumericParam("feature_fraction", lower = 0.1, upper = 1.0),
   makeIntegerParam("min_data_in_leaf", lower = 1L, upper = 8000L),
-  makeIntegerParam("envios", lower = 5000L, upper = 15000L),
-  makeIntegerParam("max_depth", lower = -1L, upper = 50L),  # -1 significa sin límite de profundidad
+  makeIntegerParam("envios", lower = 0L, upper = 5000L), #observo el maximo de las curvas
+  #makeIntegerParam("max_depth", lower = -1L, upper = 50L),  #como el crecimiento del arbols es leaf wise no se debe definir el max depht
   makeNumericParam("bagging_fraction", lower = 0.5, upper = 1.0),
   makeIntegerParam("bagging_freq", lower = 1L, upper = 10L),
-  makeNumericParam("lambda_l1", lower = 0.0, upper = 10.0),
-  makeNumericParam("lambda_l2", lower = 0.0, upper = 10.0),
+  makeNumericParam("lambda_l1", lower = 0.0, upper = 1000), #Aumenta la cantidad de validaciones
+  makeNumericParam("lambda_l2", lower = 0.0, upper = 1000), #Aumenta la cantidad de validaciones
   makeNumericParam("min_gain_to_split", lower = 0.0, upper = 1.0),
-  makeIntegerParam("max_bin", lower = 100L, upper = 255L),
-  makeIntegerParam("early_stopping_round", lower = 10L, upper = 100L)
+  makeIntegerParam("max_bin", lower = 100L, upper = 255L)
+  #makeIntegerParam("early_stopping_round", lower = 10L, upper = 100L)
   
 )
 
