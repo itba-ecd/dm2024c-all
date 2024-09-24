@@ -29,13 +29,13 @@ for( i in 1:154 ) dataset[ , paste0("canarito", i ) :=  runif( nrow(dataset)) ]
                data= dataset[ foto_mes==202107,],
                model = TRUE,
                xval = 0,
-               cp = -0.896612484265643,
-               minsplit =  3855,
-               minbucket = 413,
-               maxdepth = 8 )
+               cp = -1,
+               minsplit =  30,
+               minbucket = 5,
+               maxdepth = 6)
 
 
-pdf(file = "./arbol_canaritos.pdf", width=28, height=4)
+pdf(file = "./arbol_canaritos2.pdf", width=28, height=4)
 prp(modelo, extra=101, digits=5, branch=1, type=4, varlen=0, faclen=0)
 dev.off()
 
