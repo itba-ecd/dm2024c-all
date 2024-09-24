@@ -6,7 +6,7 @@ require("primes")
 primos <- generate_primes(min = 100000, max = 1000000)
 
 
-set.seed(177787) # inicializo 
+set.seed(1077707) # inicializo 
 
 # me quedo con por ejemplo 20 primos al azar
 semillas <- sample(primos, 20 )
