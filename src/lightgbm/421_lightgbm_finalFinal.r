@@ -22,7 +22,13 @@ PARAM$finalmodel$learning_rate <- 0.120496317188619
 PARAM$finalmodel$feature_fraction <- 0.344522115281372
 PARAM$finalmodel$min_data_in_leaf <- 1565
 PARAM$finalmodel$num_leaves <- 688
-
+PARAM$finalmodel$envios <- 688
+PARAM$finalmodel$min_gain_to_split <- 688
+PARAM$finalmodel$bagging_fraction <- 688
+PARAM$finalmodel$bagging_freq <- 688
+PARAM$finalmodel$lambda_l1 <- 688
+PARAM$finalmodel$lambda_l2 <- 688
+#agregar los parámetros que faltank
 PARAM$finalmodel$max_bin <- 31
 
 #------------------------------------------------------------------------------
@@ -117,6 +123,12 @@ modelo <- lgb.train(
     num_leaves = PARAM$finalmodel$num_leaves,
     min_data_in_leaf = PARAM$finalmodel$min_data_in_leaf,
     feature_fraction = PARAM$finalmodel$feature_fraction,
+    envios = PARAM$finalmodel$envios,
+    min_gain_to_split = PARAM$finalmodel$min_gain_to_split,
+    bagging_fraction = PARAM$finalmodel$bagging_fraction,
+    bagging_freq = PARAM$finalmodel$bagging_freq, 
+    lambda_l1 = PARAM$finalmodel$lambda_l1,
+    lambda_l2 = PARAM$finalmodel$lambda_l2,
     seed = miAmbiente$semilla_primigenia
   )
 )
@@ -164,7 +176,7 @@ setorder(tb_entrega, -prob)
 # genero archivos con los  "envios" mejores
 # suba TODOS los archivos a Kaggle
 
-cortes <- seq(1500, 3000, by = 100)
+cortes <- seq(1000, 2000, by = 100)
 for (envios in cortes) {
   tb_entrega[, Predicted := 0L]
   tb_entrega[1:envios, Predicted := 1L]
