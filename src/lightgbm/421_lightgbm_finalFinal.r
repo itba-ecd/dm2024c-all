@@ -17,18 +17,18 @@ PARAM$input$training <- c(202107) # meses donde se entrena el modelo
 PARAM$input$future <- c(202109) # meses donde se aplica el modelo
 
 
-PARAM$finalmodel$num_iterations <- 61
-PARAM$finalmodel$learning_rate <- 0.120496317188619
-PARAM$finalmodel$feature_fraction <- 0.344522115281372
-PARAM$finalmodel$min_data_in_leaf <- 1565
-PARAM$finalmodel$num_leaves <- 688
-PARAM$finalmodel$envios <- 688
-PARAM$finalmodel$min_gain_to_split <- 688
-PARAM$finalmodel$bagging_fraction <- 688
-PARAM$finalmodel$bagging_freq <- 688
-PARAM$finalmodel$lambda_l1 <- 688
-PARAM$finalmodel$lambda_l2 <- 688
-#agregar los parámetros que faltank
+PARAM$finalmodel$num_iterations <- 47
+PARAM$finalmodel$learning_rate <- 0.279543252066629
+PARAM$finalmodel$feature_fraction <- 0.717639739
+PARAM$finalmodel$min_data_in_leaf <- 229
+PARAM$finalmodel$num_leaves <- 915
+PARAM$finalmodel$envios <- 2195
+PARAM$finalmodel$min_gain_to_split <- 0.112747924738758
+PARAM$finalmodel$bagging_fraction <- 0.710172606714146
+PARAM$finalmodel$bagging_freq <- 8
+PARAM$finalmodel$lambda_l1 <- 0.243789878427134
+PARAM$finalmodel$lambda_l2 <- 20.6857908877327
+
 PARAM$finalmodel$max_bin <- 31
 
 #------------------------------------------------------------------------------
