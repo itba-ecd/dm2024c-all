@@ -142,10 +142,10 @@ tb_grid_search_detalle <- data.table(
 # itero por los loops anidados para cada hiperparametro
 
 # Valores reducidos para cp, maxdepth, minsplit, minbucket
-for (vcp in c(0.01, 0.005)) {   # Reducido a 2 valores de cp
-  for (vmax_depth in c(6, 10)) {   # Reducido a 2 valores de maxdepth
-    for (vmin_split in c(200, 50)) {   # Reducido a 2 valores de minsplit
-      for (vmin_bucket in c(10, 30)) {   # Reducido a 2 valores de minbucket
+for (vcp in c(-1)) {   # Reducido a 2 valores de cp
+  for (vmax_depth in c(4, 6)) {   # Reducido a 2 valores de maxdepth
+    for (vmin_split in c(600, 800)) {   # Reducido a 2 valores de minsplit
+      for (vmin_bucket in c(300, 400)) {   # Reducido a 2 valores de minbucket
         # param_basicos contiene la combinacion actual de hiperparámetros
         param_basicos <- list(
           "cp" = vcp,                # complejidad mínima
