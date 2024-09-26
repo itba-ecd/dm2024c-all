@@ -33,7 +33,7 @@ options(error = function() {
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM <- list()
 
-PARAM$experimento <- "HT4220"
+PARAM$experimento <- "HT4226"
 
 PARAM$input$training <- c(202107) # los meses en los que vamos a entrenar
 
@@ -41,7 +41,7 @@ PARAM$input$training <- c(202107) # los meses en los que vamos a entrenar
 # undersampling de 1.0  implica tomar TODOS los datos
 PARAM$trainingstrategy$undersampling <- 1.0
 
-PARAM$hyperparametertuning$iteraciones <- 150
+PARAM$hyperparametertuning$iteraciones <- 250
 PARAM$hyperparametertuning$xval_folds <- 5
 PARAM$hyperparametertuning$POS_ganancia <- 117000
 PARAM$hyperparametertuning$NEG_ganancia <- -3000
@@ -54,14 +54,13 @@ hs <- makeParamSet(
   makeIntegerParam("num_leaves", lower = 9L, upper = 2048L),
   makeNumericParam("feature_fraction", lower = 0.1, upper = 1.0),
   makeIntegerParam("min_data_in_leaf", lower = 1L, upper = 8000L),
-  makeIntegerParam("envios", lower = 3000L, upper = 15000L),
-  makeIntegerParam("max_depth", lower = 3L, upper = 15L),
-  makeNumericParam("lambda_l1", lower = 0.0, upper = 1.0),
-  makeNumericParam("lambda_l2", lower = 0.0, upper = 1.0),
+  makeIntegerParam("envios", lower = 1000L, upper = 5000L),
+  #makeIntegerParam("max_depth", lower = 3L, upper = 15L), no sirve para lightgbm
+  makeNumericParam("lambda_l1", lower = 0.0, upper = 1000),
+  makeNumericParam("lambda_l2", lower = 0.0, upper = 1000),
   makeNumericParam("min_gain_to_split", lower = 0.0, upper = 0.3),
   makeNumericParam("bagging_fraction", lower = 0.4, upper = 1.0),
-  makeIntegerParam("bagging_freq", lower = 1L, upper = 10L),
-  makeIntegerParam("max_bin", lower = 15L, upper = 255L)
+  makeIntegerParam("bagging_freq", lower = 1L, upper = 10L)
   
 )
 

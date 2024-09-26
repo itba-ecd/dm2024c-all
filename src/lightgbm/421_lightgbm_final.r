@@ -10,26 +10,25 @@ require("rlist")
 
 # defino los parametros de la corrida, en una lista, la variable global  PARAM
 PARAM <- list()
-PARAM$experimento <- "KA4210"
+PARAM$experimento <- "KA4211"
 
 
 PARAM$input$training <- c(202107) # meses donde se entrena el modelo
 PARAM$input$future <- c(202109) # meses donde se aplica el modelo
 
 
-PARAM$finalmodel$num_iterations <- 16
-PARAM$finalmodel$learning_rate <- 0.0953425532801994
-PARAM$finalmodel$feature_fraction <- 0.163240260098282
-PARAM$finalmodel$min_data_in_leaf <- 1445
-PARAM$finalmodel$num_leaves <- 1880
-PARAM$finalmodel$max_depth <- 4
-PARAM$finalmodel$lambda_l1 <- 0.950311840007928
-PARAM$finalmodel$lambda_l2 <- 0.211695957964744
-PARAM$finalmodel$min_gain_to_split <- 0.236280670360708
-PARAM$finalmodel$bagging_fraction <- 0.895750112520736
-PARAM$finalmodel$bagging_freq <- 9
-
-PARAM$finalmodel$max_bin <- 92
+PARAM$finalmodel$num_iterations <- 45
+PARAM$finalmodel$learning_rate <- 0.218936911189561
+PARAM$finalmodel$feature_fraction <- 0.890551565689176
+PARAM$finalmodel$min_data_in_leaf <- 4742
+PARAM$finalmodel$num_leaves <- 1799
+#PARAM$finalmodel$max_depth <- 4
+PARAM$finalmodel$lambda_l1 <- 17.0777738708809
+PARAM$finalmodel$lambda_l2 <- 56.8408179722661
+PARAM$finalmodel$min_gain_to_split <- 0.0270316748420625
+PARAM$finalmodel$bagging_fraction <- 0.981358716008145
+PARAM$finalmodel$bagging_freq <- 6
+PARAM$finalmodel$max_bin <- 31
 
 #------------------------------------------------------------------------------
 # graba a un archivo los componentes de lista
@@ -124,7 +123,6 @@ modelo <- lgb.train(
     min_data_in_leaf = PARAM$finalmodel$min_data_in_leaf,
     feature_fraction = PARAM$finalmodel$feature_fraction,
     seed = miAmbiente$semilla_primigenia,
-    max_depth = PARAM$finalmodel$max_depth,
     lambda_l1 = PARAM$finalmodel$lambda_l1,
     lambda_l2 = PARAM$finalmodel$lambda_l2,
     min_gain_to_split = PARAM$finalmodel$min_gain_to_split,
@@ -176,7 +174,7 @@ setorder(tb_entrega, -prob)
 # genero archivos con los  "envios" mejores
 # suba TODOS los archivos a Kaggle
 
-cortes <- seq(900, 4000, by = 100)
+cortes <- seq(1600, 2500, by = 100)
 for (envios in cortes) {
   tb_entrega[, Predicted := 0L]
   tb_entrega[1:envios, Predicted := 1L]
@@ -197,7 +195,6 @@ for (envios in cortes) {
     " num_leaves=", PARAM$finalmodel$num_leaves,
     " min_data_in_leaf=", PARAM$finalmodel$min_data_in_leaf,
     " feature_fraction=", PARAM$finalmodel$feature_fraction,
-    " max_depth= ", PARAM$finalmodel$max_depth,
     " lambda_l1= ", PARAM$finalmodel$lambda_l1,
     " lambda_l2= ",PARAM$finalmodel$lambda_l2,
     " min_gain_to_split= " ,PARAM$finalmodel$min_gain_to_split,
