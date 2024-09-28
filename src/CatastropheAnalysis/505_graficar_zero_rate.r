@@ -4,6 +4,8 @@
 
 # limpio la memoria
 rm(list = ls()) # remove all objects
+
+
 gc() # garbage collection
 
 
