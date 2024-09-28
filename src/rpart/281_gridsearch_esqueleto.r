@@ -141,18 +141,18 @@ tb_grid_search_detalle <- data.table(
 
 
 # itero por los loops anidados para cada hiperparametro
-for (cp in c(-1)){
+for (cp in c(-0.5)){
   for (vmax_depth in c(4, 6, 8, 10, 12, 14)) {
     for (vmin_split in c(1000, 800, 600, 400, 200, 100, 50, 20, 10)) {
-      for (minbucket in c(5, 10, 20, 30)) {
+      for (minbucket in c(500)) {
     # notar como se agrega
 
     # vminsplit  minima cantidad de registros en un nodo para hacer el split
     param_basicos <- list(
-      "cp" = -0.5, # complejidad minima
+      "cp" = cp, # complejidad minima
       "maxdepth" = vmax_depth, # profundidad máxima del arbol
       "minsplit" = vmin_split, # tamaño minimo de nodo para hacer split
-      "minbucket" = 5 # minima cantidad de registros en una hoja
+      "minbucket" = minbucket # minima cantidad de registros en una hoja
     )
 
     # Un solo llamado, con la semilla 17
