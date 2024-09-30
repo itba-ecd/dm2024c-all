@@ -28,8 +28,7 @@ setwd("~/buckets/b1/")
 miAmbiente <- read_yaml( "~/buckets/b1/miAmbiente.yml" )
 
 # cargo el dataset
-dataset <- fread(miAmbiente$dataset_competencia) # donde entreno
-
+dataset <- fread(miAmbiente$dataset_competencia)# donde entreno
 
 # creo la carpeta donde va el experimento
 dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
@@ -274,3 +273,4 @@ cat(format(Sys.time(), "%Y%m%d %H%M%S"), "\n",
   file = "zRend.txt",
   append = TRUE
 )
+
