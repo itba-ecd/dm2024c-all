@@ -10,10 +10,10 @@ PARAM <- list()
 PARAM$modalidad <- "conceptual"  # "conceptual"
 
 PARAM$rpart <- list (
-  "cp" = -1,
-  "minsplit" = 6000,
-  "minbucket" = 2000,
-  "maxdepth" = 3
+  "cp" = -0.9,
+  "minsplit" = 4000,
+  "minbucket" = 500,
+  "maxdepth" = 6
 )
 
 #------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ generarmodelo <- function( pmodalidad, param )
 
   # archivo de salida
   contador <- getandincrement("contador.yml")
-  archivo_submit <- paste0( "K100_", pmodalidad, "_",
+  archivo_submit <- paste0( "K100_5", pmodalidad, "_",
      sprintf("%.3d", contador),
      ".csv"
   )
