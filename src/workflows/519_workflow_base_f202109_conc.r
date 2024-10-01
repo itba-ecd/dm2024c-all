@@ -273,11 +273,11 @@ TS_strategy_base9 <- function( pinputexps )
   param_local$final_train$undersampling <- 1.0
   param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
   param_local$final_train$training <- c(202107, 202106, 202105, 202104, 202103, 202102,
-    202101, 202012, 202011, 202010, 202009, 202008, 202007, 202006,202005, 202004, 202003)
+    202101, 202012, 202011)
 
 
   param_local$train$training <- c(202105, 202104, 202103, 202102, 202101,
-    202012, 202011, 202010, 202009, 202008, 202007, 202006, 202005, 202004, 202003, 202002, 202001)
+    202012, 202011, 202010, 202009)
   param_local$train$validation <- c(202106)
   param_local$train$testing <- c(202107)
 
@@ -407,8 +407,8 @@ KA_evaluate_kaggle <- function( pinputexps )
 
   param_local$isems_submit <- 1:20 # misterioso parametro, no preguntar
 
-  param_local$envios_desde <-  1500L
-  param_local$envios_hasta <-  3000L
+  param_local$envios_desde <-  1600L
+  param_local$envios_hasta <-  2200L
   param_local$envios_salto <-   100L
   param_local$competition <- "data-mining-conceptual-2024-c"
 
@@ -437,7 +437,7 @@ wf_septiembre <- function( pnombrewf )
   ts9 <- TS_strategy_base9()
   ht <- HT_tuning_base()
 
-  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=10 )
+  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=5 )
   SC_scoring( c(fm, ts9) )
   KA_evaluate_kaggle()
 
