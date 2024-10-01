@@ -143,9 +143,9 @@ tb_grid_search_detalle <- data.table(
 # itero por los loops anidados para cada hiperparametro
 
 for (vmax_depth in c(4, 6, 8, 10, 12, 14)) {
-  for (vmin_split in c(1000, 800, 600, 400, 200, 100, 50, 20, 10)) {
-    for (cp in c(0.1, -0.1, -0.3, -0.5, -0.7)) {
-      for (minibucket in c(5)){
+  for (vmin_split in c(1000, 800, 600, 400, 200, 100, 50)) {
+    for (cp in c(0.1, -0.5, -1)) {
+      for (minibucket in c(vmin_split/2, vmin_split/4, vmin_split/8)){
     # notar como se agrega
 
     # vminsplit  minima cantidad de registros en un nodo para hacer el split
@@ -164,10 +164,6 @@ for (vmax_depth in c(4, 6, 8, 10, 12, 14)) {
       list( tb_grid_search_detalle,
             rbindlist(ganancias) )
     )
-
- #     }
-  #  }
-  #}
   
   # grabo cada vez TODA la tabla en el loop mas externo
   fwrite( tb_grid_search_detalle,
