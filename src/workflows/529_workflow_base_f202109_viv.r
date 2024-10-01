@@ -189,7 +189,7 @@ FErf_attributes_base <- function( pinputexps, ratio, desvio)
     # parametros que se pueden cambiar
     num_iterations = 20,
     num_leaves  = 16,
-    min_data_in_leaf = 200,
+    min_data_in_leaf = 1000,
     feature_fraction_bynode  = 0.2,
 
     # para que LightGBM emule Random Forest
@@ -307,7 +307,7 @@ HT_tuning_base <- function( pinputexps, bypass=FALSE)
   param_local$train$positivos <- c( "BAJA+2")
   param_local$train$gan1 <- 117000
   param_local$train$gan0 <-  -3000
-  param_local$train$meseta <- 401
+  param_local$train$meseta <- 2001
 
   # Hiperparametros  del LightGBM
   #  los que tienen un solo valor son los que van fijos
@@ -345,7 +345,7 @@ HT_tuning_base <- function( pinputexps, bypass=FALSE)
     learning_rate = c( 0.02, 0.3 ),
     feature_fraction = c( 0.5, 0.9 ),
     num_leaves = c( 8L, 2048L,  "integer" ),
-    min_data_in_leaf = c( 20L, 2000L, "integer" )
+    min_data_in_leaf = c( 100L, 10000L, "integer" )
   )
 
 
@@ -407,10 +407,10 @@ KA_evaluate_kaggle <- function( pinputexps )
 
   param_local$isems_submit <- 1:20 # misterioso parametro, no preguntar
 
-  param_local$envios_desde <-  1600L
-  param_local$envios_hasta <-  2200L
-  param_local$envios_salto <-   100L
-  param_local$competition <- "data-mining-conceptual-2024-c"
+  param_local$envios_desde <-   9000L
+  param_local$envios_hasta <-  13000L
+  param_local$envios_salto <-    500L
+  param_local$competition <- "data-mining-vivencial-2024-c"
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
