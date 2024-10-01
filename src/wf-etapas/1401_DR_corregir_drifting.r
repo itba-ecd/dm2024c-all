@@ -51,144 +51,144 @@ vIPC <- c(
   0.7763107219, 0.7566381305, 0.7289384687
 )
 
-vdolar_blue <- c(
-   39.045455,  38.402500,  41.639474,
-   44.274737,  46.095455,  45.063333,
-   43.983333,  54.842857,  61.059524,
-   65.545455,  66.750000,  72.368421,
-   77.477273,  78.191667,  82.434211,
-  101.087500, 126.236842, 125.857143,
-  130.782609, 133.400000, 137.954545,
-  170.619048, 160.400000, 153.052632,
-  157.900000, 149.380952, 143.615385,
-  146.250000, 153.550000, 162.000000,
-  178.478261, 180.878788, 184.357143
-)
-
-vdolar_oficial <- c(
-   38.430000,  39.428000,  42.542105,
-   44.354211,  46.088636,  44.955000,
-   43.751429,  54.650476,  58.790000,
-   61.403182,  63.012632,  63.011579,
-   62.983636,  63.580556,  65.200000,
-   67.872000,  70.047895,  72.520952,
-   75.324286,  77.488500,  79.430909,
-   83.134762,  85.484737,  88.181667,
-   91.474000,  93.997778,  96.635909,
-   98.526000,  99.613158, 100.619048,
-  101.619048, 102.569048, 103.781818
-)
-  
-vUVA <- c(
-  2.001408838932958,  1.950325472789153,  1.89323032351521,
-  1.8247220405493787, 1.746027787673673,  1.6871348409529485,
-  1.6361678865622313, 1.5927529755859773, 1.5549162794128493,
-  1.4949100586391746, 1.4197729500774545, 1.3678188186372326,
-  1.3136508617223726, 1.2690535173062818, 1.2381595983200178,
-  1.211656735577568,  1.1770808941405335, 1.1570338657445522,
-  1.1388769475653255, 1.1156993751209352, 1.093638313080772,
-  1.0657171590878205, 1.0362173587708712, 1.0,
-  0.9669867858358365, 0.9323750098728378, 0.8958202912590305,
-  0.8631993702994263, 0.8253893405524657, 0.7928918905364516,
-  0.7666323845128089, 0.7428976357662823, 0.721615762047849
-)
-
-vCER <- c(
-  2.771001867, 2.700714741, 2.608960382,
-  2.504125054, 2.405414091, 2.330950172,
-  2.264290726, 2.210328231, 2.144702669,
-  2.04173583, 1.953905456, 1.881123368,
-  1.808943236, 1.758020829, 1.719792522,
-  1.675966289, 1.636355602, 1.612562685,
-  1.582722581, 1.551007001, 1.516604371,
-  1.475356691, 1.428878382, 1.379865303,
-  1.331759744, 1.283144879, 1.233738633,
-  1.184703359, 1.133502388, 1.093776623,
-  1.05880848, 1.02700738, 1
-)
-
-vIPIM <- c(
-  3.0, 2.9, 2.8, 
-  2.6, 2.5, 2.5, 
-  2.5, 2.2, 2.1, 
-  2.1, 2.0, 1.9, 
-  1.9, 1.8, 1.8, 
-  1.9, 1.8, 1.8, 
-  1.7, 1.6, 1.6, 
-  1.5, 1.5, 1.4, 
-  1.3, 1.2, 1.2, 
-  1.1, 1.1, 1.1, 
-  1.1, 1.0, 1.0
-)
-
-#------------------------------------------------------------------------------
-
-drift_CER <- function(campos_monetarios) {
-  cat( "inicio drift_CER()\n")
-  
-  dataset[tb_indices,
-          on = c(envg$PARAM$dataset_metadata$periodo),
-          (campos_monetarios) := .SD * i.CER,
-          .SDcols = campos_monetarios
-  ]
-  
-  cat( "fin drift_CER()\n")
-}
+# vdolar_blue <- c(
+#    39.045455,  38.402500,  41.639474,
+#    44.274737,  46.095455,  45.063333,
+#    43.983333,  54.842857,  61.059524,
+#    65.545455,  66.750000,  72.368421,
+#    77.477273,  78.191667,  82.434211,
+#   101.087500, 126.236842, 125.857143,
+#   130.782609, 133.400000, 137.954545,
+#   170.619048, 160.400000, 153.052632,
+#   157.900000, 149.380952, 143.615385,
+#   146.250000, 153.550000, 162.000000,
+#   178.478261, 180.878788, 184.357143
+# )
+# 
+# vdolar_oficial <- c(
+#    38.430000,  39.428000,  42.542105,
+#    44.354211,  46.088636,  44.955000,
+#    43.751429,  54.650476,  58.790000,
+#    61.403182,  63.012632,  63.011579,
+#    62.983636,  63.580556,  65.200000,
+#    67.872000,  70.047895,  72.520952,
+#    75.324286,  77.488500,  79.430909,
+#    83.134762,  85.484737,  88.181667,
+#    91.474000,  93.997778,  96.635909,
+#    98.526000,  99.613158, 100.619048,
+#   101.619048, 102.569048, 103.781818
+# )
+#   
+# vUVA <- c(
+#   2.001408838932958,  1.950325472789153,  1.89323032351521,
+#   1.8247220405493787, 1.746027787673673,  1.6871348409529485,
+#   1.6361678865622313, 1.5927529755859773, 1.5549162794128493,
+#   1.4949100586391746, 1.4197729500774545, 1.3678188186372326,
+#   1.3136508617223726, 1.2690535173062818, 1.2381595983200178,
+#   1.211656735577568,  1.1770808941405335, 1.1570338657445522,
+#   1.1388769475653255, 1.1156993751209352, 1.093638313080772,
+#   1.0657171590878205, 1.0362173587708712, 1.0,
+#   0.9669867858358365, 0.9323750098728378, 0.8958202912590305,
+#   0.8631993702994263, 0.8253893405524657, 0.7928918905364516,
+#   0.7666323845128089, 0.7428976357662823, 0.721615762047849
+# )
+# 
+# vCER <- c(
+#   2.771001867, 2.700714741, 2.608960382,
+#   2.504125054, 2.405414091, 2.330950172,
+#   2.264290726, 2.210328231, 2.144702669,
+#   2.04173583, 1.953905456, 1.881123368,
+#   1.808943236, 1.758020829, 1.719792522,
+#   1.675966289, 1.636355602, 1.612562685,
+#   1.582722581, 1.551007001, 1.516604371,
+#   1.475356691, 1.428878382, 1.379865303,
+#   1.331759744, 1.283144879, 1.233738633,
+#   1.184703359, 1.133502388, 1.093776623,
+#   1.05880848, 1.02700738, 1
+# )
+# 
+# vIPIM <- c(
+#   3.0, 2.9, 2.8, 
+#   2.6, 2.5, 2.5, 
+#   2.5, 2.2, 2.1, 
+#   2.1, 2.0, 1.9, 
+#   1.9, 1.8, 1.8, 
+#   1.9, 1.8, 1.8, 
+#   1.7, 1.6, 1.6, 
+#   1.5, 1.5, 1.4, 
+#   1.3, 1.2, 1.2, 
+#   1.1, 1.1, 1.1, 
+#   1.1, 1.0, 1.0
+# )
 
 #------------------------------------------------------------------------------
 
-drift_IPIM <- function(campos_monetarios) {
-  cat( "inicio drift_IPIM()\n")
-  
-  dataset[tb_indices,
-          on = c(envg$PARAM$dataset_metadata$periodo),
-          (campos_monetarios) := .SD * i.IPIM,
-          .SDcols = campos_monetarios
-  ]
-  
-  cat( "fin drift_IPIM()\n")
-}
+# drift_CER <- function(campos_monetarios) {
+#   cat( "inicio drift_CER()\n")
+#   
+#   dataset[tb_indices,
+#           on = c(envg$PARAM$dataset_metadata$periodo),
+#           (campos_monetarios) := .SD * i.CER,
+#           .SDcols = campos_monetarios
+#   ]
+#   
+#   cat( "fin drift_CER()\n")
+# }
+# 
+# #------------------------------------------------------------------------------
 
-
-#------------------------------------------------------------------------------
-
-drift_UVA <- function(campos_monetarios) {
-  cat( "inicio drift_UVA()\n")
-
-  dataset[tb_indices,
-    on = c(envg$PARAM$dataset_metadata$periodo),
-    (campos_monetarios) := .SD * i.UVA,
-    .SDcols = campos_monetarios
-  ]
-
-  cat( "fin drift_UVA()\n")
-}
-#------------------------------------------------------------------------------
-
-drift_dolar_oficial <- function(campos_monetarios) {
-  cat( "inicio drift_dolar_oficial()\n")
-
-  dataset[tb_indices,
-    on = c(envg$PARAM$dataset_metadata$periodo),
-    (campos_monetarios) := .SD / i.dolar_oficial,
-    .SDcols = campos_monetarios
-  ]
-
-  cat( "fin drift_dolar_oficial()\n")
-}
-#------------------------------------------------------------------------------
-
-drift_dolar_blue <- function(campos_monetarios) {
-  cat( "inicio drift_dolar_blue()\n")
-
-  dataset[tb_indices,
-    on = c(envg$PARAM$dataset_metadata$periodo),
-    (campos_monetarios) := .SD / i.dolar_blue,
-    .SDcols = campos_monetarios
-  ]
-
-  cat( "fin drift_dolar_blue()\n")
-}
+# drift_IPIM <- function(campos_monetarios) {
+#   cat( "inicio drift_IPIM()\n")
+#   
+#   dataset[tb_indices,
+#           on = c(envg$PARAM$dataset_metadata$periodo),
+#           (campos_monetarios) := .SD * i.IPIM,
+#           .SDcols = campos_monetarios
+#   ]
+#   
+#   cat( "fin drift_IPIM()\n")
+# }
+# 
+# 
+# #------------------------------------------------------------------------------
+# 
+# drift_UVA <- function(campos_monetarios) {
+#   cat( "inicio drift_UVA()\n")
+# 
+#   dataset[tb_indices,
+#     on = c(envg$PARAM$dataset_metadata$periodo),
+#     (campos_monetarios) := .SD * i.UVA,
+#     .SDcols = campos_monetarios
+#   ]
+# 
+#   cat( "fin drift_UVA()\n")
+# }
+# #------------------------------------------------------------------------------
+# 
+# drift_dolar_oficial <- function(campos_monetarios) {
+#   cat( "inicio drift_dolar_oficial()\n")
+# 
+#   dataset[tb_indices,
+#     on = c(envg$PARAM$dataset_metadata$periodo),
+#     (campos_monetarios) := .SD / i.dolar_oficial,
+#     .SDcols = campos_monetarios
+#   ]
+# 
+#   cat( "fin drift_dolar_oficial()\n")
+# }
+# #------------------------------------------------------------------------------
+# 
+# drift_dolar_blue <- function(campos_monetarios) {
+#   cat( "inicio drift_dolar_blue()\n")
+# 
+#   dataset[tb_indices,
+#     on = c(envg$PARAM$dataset_metadata$periodo),
+#     (campos_monetarios) := .SD / i.dolar_blue,
+#     .SDcols = campos_monetarios
+#   ]
+# 
+#   cat( "fin drift_dolar_blue()\n")
+# }
 #------------------------------------------------------------------------------
 
 drift_deflacion <- function(campos_monetarios) {
@@ -205,56 +205,56 @@ drift_deflacion <- function(campos_monetarios) {
 
 #------------------------------------------------------------------------------
 
-drift_rank_simple <- function(campos_drift) {
-  
-  cat( "inicio drift_rank_simple()\n")
-  for (campo in campos_drift)
-  {
-    cat(campo, " ")
-    dataset[, paste0(campo, "_rank") :=
-      (frank(get(campo), ties.method = "random") - 1) / (.N - 1), by = eval(envg$PARAM$dataset_metadata$periodo)]
-    dataset[, (campo) := NULL]
-  }
-  cat( "fin drift_rank_simple()\n")
-}
+# drift_rank_simple <- function(campos_drift) {
+#   
+#   cat( "inicio drift_rank_simple()\n")
+#   for (campo in campos_drift)
+#   {
+#     cat(campo, " ")
+#     dataset[, paste0(campo, "_rank") :=
+#       (frank(get(campo), ties.method = "random") - 1) / (.N - 1), by = eval(envg$PARAM$dataset_metadata$periodo)]
+#     dataset[, (campo) := NULL]
+#   }
+#   cat( "fin drift_rank_simple()\n")
+# }
 #------------------------------------------------------------------------------
 # El cero se transforma en cero
 # los positivos se rankean por su lado
 # los negativos se rankean por su lado
 
-drift_rank_cero_fijo <- function(campos_drift) {
- 
-  cat( "inicio drift_rank_cero_fijo()\n")
-  for (campo in campos_drift)
-  {
-    cat(campo, " ")
-    dataset[get(campo) == 0, paste0(campo, "_rank") := 0]
-    dataset[get(campo) > 0, paste0(campo, "_rank") :=
-      frank(get(campo), ties.method = "random") / .N, by = eval(envg$PARAM$dataset_metadata$periodo)]
-
-    dataset[get(campo) < 0, paste0(campo, "_rank") :=
-      -frank(-get(campo), ties.method = "random") / .N, by = eval(envg$PARAM$dataset_metadata$periodo)]
-    dataset[, (campo) := NULL]
-  }
-  cat("\n")
-  cat( "fin drift_rank_cero_fijo()\n")
-}
-#------------------------------------------------------------------------------
-
-drift_estandarizar <- function(campos_drift) {
-
-  cat( "inicio drift_estandarizar()\n")
-  for (campo in campos_drift)
-  {
-    cat(campo, " ")
-    dataset[, paste0(campo, "_normal") := 
-      (get(campo) -mean(campo, na.rm=TRUE)) / sd(get(campo), na.rm=TRUE),
-      by = eval(envg$PARAM$dataset_metadata$periodo)]
-
-    dataset[, (campo) := NULL]
-  }
-  cat( "fin drift_estandarizar()\n")
-}
+# drift_rank_cero_fijo <- function(campos_drift) {
+#  
+#   cat( "inicio drift_rank_cero_fijo()\n")
+#   for (campo in campos_drift)
+#   {
+#     cat(campo, " ")
+#     dataset[get(campo) == 0, paste0(campo, "_rank") := 0]
+#     dataset[get(campo) > 0, paste0(campo, "_rank") :=
+#       frank(get(campo), ties.method = "random") / .N, by = eval(envg$PARAM$dataset_metadata$periodo)]
+# 
+#     dataset[get(campo) < 0, paste0(campo, "_rank") :=
+#       -frank(-get(campo), ties.method = "random") / .N, by = eval(envg$PARAM$dataset_metadata$periodo)]
+#     dataset[, (campo) := NULL]
+#   }
+#   cat("\n")
+#   cat( "fin drift_rank_cero_fijo()\n")
+# }
+# #------------------------------------------------------------------------------
+# 
+# drift_estandarizar <- function(campos_drift) {
+# 
+#   cat( "inicio drift_estandarizar()\n")
+#   for (campo in campos_drift)
+#   {
+#     cat(campo, " ")
+#     dataset[, paste0(campo, "_normal") := 
+#       (get(campo) -mean(campo, na.rm=TRUE)) / sd(get(campo), na.rm=TRUE),
+#       by = eval(envg$PARAM$dataset_metadata$periodo)]
+# 
+#     dataset[, (campo) := NULL]
+#   }
+#   cat( "fin drift_estandarizar()\n")
+# }
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 # Aqui comienza el programa
@@ -270,9 +270,9 @@ envg$PARAM$dataset_metadata <- read_yaml( paste0( "./", envg$PARAM$input, "/data
 # tabla de indices financieros
 tb_indices <- as.data.table( list( 
   "IPC" = vIPC,
-  "dolar_blue" = vdolar_blue,
-  "dolar_oficial" = vdolar_oficial,
-  "UVA" = vUVA
+  # "dolar_blue" = vdolar_blue,
+  # "dolar_oficial" = vdolar_oficial,
+  # "UVA" = vUVA
   )
 )
 tb_indices[[ envg$PARAM$dataset_metadata$periodo ]] <- vfoto_mes
@@ -298,14 +298,14 @@ campos_monetarios <- campos_monetarios[campos_monetarios %like%
 # aqui aplico un metodo para atacar el data drifting
 # hay que probar experimentalmente cual funciona mejor
 switch(envg$PARAM$metodo,
-  "ninguno"        = cat("No hay correccion del data drifting"),
-  "rank_simple"    = drift_rank_simple(campos_monetarios),
-  "rank_cero_fijo" = drift_rank_cero_fijo(campos_monetarios),
+  # "ninguno"        = cat("No hay correccion del data drifting"),
+  # "rank_simple"    = drift_rank_simple(campos_monetarios),
+  # "rank_cero_fijo" = drift_rank_cero_fijo(campos_monetarios),
   "deflacion"      = drift_deflacion(campos_monetarios),
-  "dolar_blue"     = drift_dolarblue(campos_monetarios),
-  "dolar_oficial"  = drift_dolaroficial(campos_monetarios),
-  "UVA"            = drift_UVA(campos_monetarios),
-  "estandarizar"   = drift_estandarizar(campos_monetarios)
+  # "dolar_blue"     = drift_dolarblue(campos_monetarios),
+  # "dolar_oficial"  = drift_dolaroficial(campos_monetarios),
+  # "UVA"            = drift_UVA(campos_monetarios),
+  # "estandarizar"   = drift_estandarizar(campos_monetarios)
 )
 
 
