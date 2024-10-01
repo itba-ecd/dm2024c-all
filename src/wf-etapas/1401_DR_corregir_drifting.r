@@ -37,19 +37,19 @@ vfoto_mes <- c(
 # los valores que siguen fueron calculados por alumnos
 
 # momento 1.0  31-dic-2020 a las 23:59
-vIPC <- c(
-  1.9903030878, 1.9174403544, 1.8296186587,
-  1.7728862972, 1.7212488323, 1.6776304408,
-  1.6431248196, 1.5814483345, 1.4947526791,
-  1.4484037589, 1.3913580777, 1.3404220402,
-  1.3154288912, 1.2921698342, 1.2472681797,
-  1.2300475145, 1.2118694724, 1.1881073259,
-  1.1693969743, 1.1375456949, 1.1065619600,
-  1.0681100000, 1.0370000000, 1.0000000000,
-  0.9680542110, 0.9344152616, 0.8882274350,
-  0.8532444140, 0.8251880213, 0.8003763543,
-  0.7763107219, 0.7566381305, 0.7289384687
-)
+# vIPC <- c(
+#   1.9903030878, 1.9174403544, 1.8296186587,
+#   1.7728862972, 1.7212488323, 1.6776304408,
+#   1.6431248196, 1.5814483345, 1.4947526791,
+#   1.4484037589, 1.3913580777, 1.3404220402,
+#   1.3154288912, 1.2921698342, 1.2472681797,
+#   1.2300475145, 1.2118694724, 1.1881073259,
+#   1.1693969743, 1.1375456949, 1.1065619600,
+#   1.0681100000, 1.0370000000, 1.0000000000,
+#   0.9680542110, 0.9344152616, 0.8882274350,
+#   0.8532444140, 0.8251880213, 0.8003763543,
+#   0.7763107219, 0.7566381305, 0.7289384687
+# )
 
 # vdolar_blue <- c(
 #    39.045455,  38.402500,  41.639474,
@@ -64,7 +64,7 @@ vIPC <- c(
 #   146.250000, 153.550000, 162.000000,
 #   178.478261, 180.878788, 184.357143
 # )
-# 
+ 
 # vdolar_oficial <- c(
 #    38.430000,  39.428000,  42.542105,
 #    44.354211,  46.088636,  44.955000,
@@ -78,7 +78,7 @@ vIPC <- c(
 #    98.526000,  99.613158, 100.619048,
 #   101.619048, 102.569048, 103.781818
 # )
-#   
+   
 # vUVA <- c(
 #   2.001408838932958,  1.950325472789153,  1.89323032351521,
 #   1.8247220405493787, 1.746027787673673,  1.6871348409529485,
@@ -92,7 +92,7 @@ vIPC <- c(
 #   0.8631993702994263, 0.8253893405524657, 0.7928918905364516,
 #   0.7666323845128089, 0.7428976357662823, 0.721615762047849
 # )
-# 
+
 # vCER <- c(
 #   2.771001867, 2.700714741, 2.608960382,
 #   2.504125054, 2.405414091, 2.330950172,
@@ -106,20 +106,20 @@ vIPC <- c(
 #   1.184703359, 1.133502388, 1.093776623,
 #   1.05880848, 1.02700738, 1
 # )
-# 
-# vIPIM <- c(
-#   3.0, 2.9, 2.8, 
-#   2.6, 2.5, 2.5, 
-#   2.5, 2.2, 2.1, 
-#   2.1, 2.0, 1.9, 
-#   1.9, 1.8, 1.8, 
-#   1.9, 1.8, 1.8, 
-#   1.7, 1.6, 1.6, 
-#   1.5, 1.5, 1.4, 
-#   1.3, 1.2, 1.2, 
-#   1.1, 1.1, 1.1, 
-#   1.1, 1.0, 1.0
-# )
+
+vIPIM <- c(
+  3.0, 2.9, 2.8,
+  2.6, 2.5, 2.5,
+  2.5, 2.2, 2.1,
+  2.1, 2.0, 1.9,
+  1.9, 1.8, 1.8,
+  1.9, 1.8, 1.8,
+  1.7, 1.6, 1.6,
+  1.5, 1.5, 1.4,
+  1.3, 1.2, 1.2,
+  1.1, 1.1, 1.1,
+  1.1, 1.0, 1.0
+)
 
 #------------------------------------------------------------------------------
 
@@ -134,24 +134,23 @@ vIPC <- c(
 #   
 #   cat( "fin drift_CER()\n")
 # }
-# 
-# #------------------------------------------------------------------------------
 
-# drift_IPIM <- function(campos_monetarios) {
-#   cat( "inicio drift_IPIM()\n")
-#   
-#   dataset[tb_indices,
-#           on = c(envg$PARAM$dataset_metadata$periodo),
-#           (campos_monetarios) := .SD * i.IPIM,
-#           .SDcols = campos_monetarios
-#   ]
-#   
-#   cat( "fin drift_IPIM()\n")
-# }
-# 
-# 
-# #------------------------------------------------------------------------------
-# 
+ #------------------------------------------------------------------------------
+
+drift_IPIM <- function(campos_monetarios) {
+  cat( "inicio drift_IPIM()\n")
+
+  dataset[tb_indices,
+          on = c(envg$PARAM$dataset_metadata$periodo),
+          (campos_monetarios) := .SD * i.IPIM,
+          .SDcols = campos_monetarios
+  ]
+
+  cat( "fin drift_IPIM()\n")
+}
+
+ #------------------------------------------------------------------------------
+ 
 # drift_UVA <- function(campos_monetarios) {
 #   cat( "inicio drift_UVA()\n")
 # 
@@ -163,8 +162,9 @@ vIPC <- c(
 # 
 #   cat( "fin drift_UVA()\n")
 # }
-# #------------------------------------------------------------------------------
-# 
+
+# ------------------------------------------------------------------------------
+
 # drift_dolar_oficial <- function(campos_monetarios) {
 #   cat( "inicio drift_dolar_oficial()\n")
 # 
@@ -176,8 +176,9 @@ vIPC <- c(
 # 
 #   cat( "fin drift_dolar_oficial()\n")
 # }
-# #------------------------------------------------------------------------------
-# 
+
+#------------------------------------------------------------------------------
+ 
 # drift_dolar_blue <- function(campos_monetarios) {
 #   cat( "inicio drift_dolar_blue()\n")
 # 
@@ -189,24 +190,25 @@ vIPC <- c(
 # 
 #   cat( "fin drift_dolar_blue()\n")
 # }
+
 #------------------------------------------------------------------------------
 
-drift_deflacion <- function(campos_monetarios) {
-  cat( "inicio drift_deflacion()\n")
-
-  dataset[tb_indices,
-    on = c(envg$PARAM$dataset_metadata$periodo),
-    (campos_monetarios) := .SD * i.IPC,
-    .SDcols = campos_monetarios
-  ]
-
-  cat( "fin drift_deflacion()\n")
-}
+# drift_deflacion <- function(campos_monetarios) {
+#   cat( "inicio drift_deflacion()\n")
+# 
+#   dataset[tb_indices,
+#     on = c(envg$PARAM$dataset_metadata$periodo),
+#     (campos_monetarios) := .SD * i.IPC,
+#     .SDcols = campos_monetarios
+#   ]
+# 
+#   cat( "fin drift_deflacion()\n")
+# }
 
 #------------------------------------------------------------------------------
 
 # drift_rank_simple <- function(campos_drift) {
-#   
+# 
 #   cat( "inicio drift_rank_simple()\n")
 #   for (campo in campos_drift)
 #   {
@@ -217,6 +219,7 @@ drift_deflacion <- function(campos_monetarios) {
 #   }
 #   cat( "fin drift_rank_simple()\n")
 # }
+
 #------------------------------------------------------------------------------
 # El cero se transforma en cero
 # los positivos se rankean por su lado
@@ -239,15 +242,16 @@ drift_deflacion <- function(campos_monetarios) {
 #   cat("\n")
 #   cat( "fin drift_rank_cero_fijo()\n")
 # }
-# #------------------------------------------------------------------------------
-# 
+
+#------------------------------------------------------------------------------
+ 
 # drift_estandarizar <- function(campos_drift) {
 # 
 #   cat( "inicio drift_estandarizar()\n")
 #   for (campo in campos_drift)
 #   {
 #     cat(campo, " ")
-#     dataset[, paste0(campo, "_normal") := 
+#     dataset[, paste0(campo, "_normal") :=
 #       (get(campo) -mean(campo, na.rm=TRUE)) / sd(get(campo), na.rm=TRUE),
 #       by = eval(envg$PARAM$dataset_metadata$periodo)]
 # 
@@ -255,6 +259,7 @@ drift_deflacion <- function(campos_monetarios) {
 #   }
 #   cat( "fin drift_estandarizar()\n")
 # }
+
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 # Aqui comienza el programa
@@ -268,13 +273,15 @@ envg$PARAM$dataset <- paste0( "./", envg$PARAM$input, "/dataset.csv.gz" )
 envg$PARAM$dataset_metadata <- read_yaml( paste0( "./", envg$PARAM$input, "/dataset_metadata.yml" ) )
 
 # tabla de indices financieros
-tb_indices <- as.data.table( list( 
-  "IPC" = vIPC,
+ tb_indices <- as.data.table( list( 
+  #"IPC" = vIPC,
   # "dolar_blue" = vdolar_blue,
   # "dolar_oficial" = vdolar_oficial,
-  # "UVA" = vUVA
+  # "UVA" = vUVA,
+  # "CER" = vCER,
+   "IPIM"= vIPIM
   )
-)
+ )
 tb_indices[[ envg$PARAM$dataset_metadata$periodo ]] <- vfoto_mes
 
 
@@ -301,11 +308,13 @@ switch(envg$PARAM$metodo,
   # "ninguno"        = cat("No hay correccion del data drifting"),
   # "rank_simple"    = drift_rank_simple(campos_monetarios),
   # "rank_cero_fijo" = drift_rank_cero_fijo(campos_monetarios),
-  "deflacion"      = drift_deflacion(campos_monetarios),
-  # "dolar_blue"     = drift_dolarblue(campos_monetarios),
-  # "dolar_oficial"  = drift_dolaroficial(campos_monetarios),
+  #"deflacion"      = drift_deflacion(campos_monetarios),
+  # "dolar_blue"     = drift_dolar_blue(campos_monetarios),
+  # "dolar_oficial"  = drift_dolar_oficial(campos_monetarios),
   # "UVA"            = drift_UVA(campos_monetarios),
-  # "estandarizar"   = drift_estandarizar(campos_monetarios)
+  # "estandarizar"   = drift_estandarizar(campos_monetarios),
+  # "CER" = drift_CER(campos_monetarios),
+   "IPIM" = drift_IPIM (campos_monetarios)
 )
 
 
