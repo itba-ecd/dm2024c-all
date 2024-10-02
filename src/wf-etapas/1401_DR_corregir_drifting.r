@@ -79,19 +79,19 @@ vfoto_mes <- c(
 #   101.619048, 102.569048, 103.781818
 # )
    
-# vUVA <- c(
-#   2.001408838932958,  1.950325472789153,  1.89323032351521,
-#   1.8247220405493787, 1.746027787673673,  1.6871348409529485,
-#   1.6361678865622313, 1.5927529755859773, 1.5549162794128493,
-#   1.4949100586391746, 1.4197729500774545, 1.3678188186372326,
-#   1.3136508617223726, 1.2690535173062818, 1.2381595983200178,
-#   1.211656735577568,  1.1770808941405335, 1.1570338657445522,
-#   1.1388769475653255, 1.1156993751209352, 1.093638313080772,
-#   1.0657171590878205, 1.0362173587708712, 1.0,
-#   0.9669867858358365, 0.9323750098728378, 0.8958202912590305,
-#   0.8631993702994263, 0.8253893405524657, 0.7928918905364516,
-#   0.7666323845128089, 0.7428976357662823, 0.721615762047849
-# )
+vUVA <- c(
+  2.001408838932958,  1.950325472789153,  1.89323032351521,
+  1.8247220405493787, 1.746027787673673,  1.6871348409529485,
+  1.6361678865622313, 1.5927529755859773, 1.5549162794128493,
+  1.4949100586391746, 1.4197729500774545, 1.3678188186372326,
+  1.3136508617223726, 1.2690535173062818, 1.2381595983200178,
+  1.211656735577568,  1.1770808941405335, 1.1570338657445522,
+  1.1388769475653255, 1.1156993751209352, 1.093638313080772,
+  1.0657171590878205, 1.0362173587708712, 1.0,
+  0.9669867858358365, 0.9323750098728378, 0.8958202912590305,
+  0.8631993702994263, 0.8253893405524657, 0.7928918905364516,
+  0.7666323845128089, 0.7428976357662823, 0.721615762047849
+)
 
 # vCER <- c(
 #   2.771001867, 2.700714741, 2.608960382,
@@ -121,6 +121,8 @@ vIPIM <- c(
   1.1, 1.0, 1.0
 )
 
+vUVIM <- vUVA*vIPIM
+
 #------------------------------------------------------------------------------
 
 # drift_CER <- function(campos_monetarios) {
@@ -137,17 +139,17 @@ vIPIM <- c(
 
  #------------------------------------------------------------------------------
 
-drift_IPIM <- function(campos_monetarios) {
-  cat( "inicio drift_IPIM()\n")
-
-  dataset[tb_indices,
-          on = c(envg$PARAM$dataset_metadata$periodo),
-          (campos_monetarios) := .SD * i.IPIM,
-          .SDcols = campos_monetarios
-  ]
-
-  cat( "fin drift_IPIM()\n")
-}
+# drift_IPIM <- function(campos_monetarios) {
+#   cat( "inicio drift_IPIM()\n")
+# 
+#   dataset[tb_indices,
+#           on = c(envg$PARAM$dataset_metadata$periodo),
+#           (campos_monetarios) := .SD * i.IPIM,
+#           .SDcols = campos_monetarios
+#   ]
+# 
+#   cat( "fin drift_IPIM()\n")
+# }
 
  #------------------------------------------------------------------------------
  
@@ -162,6 +164,20 @@ drift_IPIM <- function(campos_monetarios) {
 # 
 #   cat( "fin drift_UVA()\n")
 # }
+
+#---------------------------------------------------------------------------
+
+drift_UVIM <- function(campos_monetarios) {
+  cat( "inicio drift_UVIM()\n")
+  
+  dataset[tb_indices,
+          on = c(envg$PARAM$dataset_metadata$periodo),
+          (campos_monetarios) := .SD * i.UVIM,
+          .SDcols = campos_monetarios
+  ]
+  
+  cat( "fin drift_UVIM()\n")
+}
 
 # ------------------------------------------------------------------------------
 
@@ -279,7 +295,8 @@ envg$PARAM$dataset_metadata <- read_yaml( paste0( "./", envg$PARAM$input, "/data
   # "dolar_oficial" = vdolar_oficial,
   # "UVA" = vUVA,
   # "CER" = vCER,
-   "IPIM"= vIPIM
+  # "IPIM"= vIPIM,
+   "UVIM" =vUVIM
   )
  )
 tb_indices[[ envg$PARAM$dataset_metadata$periodo ]] <- vfoto_mes
@@ -314,7 +331,8 @@ switch(envg$PARAM$metodo,
   # "UVA"            = drift_UVA(campos_monetarios),
   # "estandarizar"   = drift_estandarizar(campos_monetarios),
   # "CER" = drift_CER(campos_monetarios),
-   "IPIM" = drift_IPIM (campos_monetarios)
+  # "IPIM" = drift_IPIM (campos_monetarios),
+  "UVIM" = drift_UVIM (campos_monetarios)
 )
 
 
