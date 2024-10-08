@@ -16,8 +16,8 @@ correr_workflow <- function( wf_scriptname )
   setwd("~/tmp" )
 
   # creo el script que corre el experimento
-  comando <- paste0( 
-      "#!/bin/bash\n", 
+  comando <- paste0(
+      "#!/bin/bash\n",
       "source /home/$USER/.venv/bin/activate\n",
       "nice -n 15 Rscript --vanilla ",
       envg$EXPENV$repo_dir,
