@@ -51,19 +51,19 @@ vfoto_mes <- c(
 #   0.7763107219, 0.7566381305, 0.7289384687
 # )
 
-vdolar_blue <- c(
-  39.045455,  38.402500,  41.639474,
-  44.274737,  46.095455,  45.063333,
-  43.983333,  54.842857,  61.059524,
-  65.545455,  66.750000,  72.368421,
-  77.477273,  78.191667,  82.434211,
-  101.087500, 126.236842, 125.857143,
-  130.782609, 133.400000, 137.954545,
-  170.619048, 160.400000, 153.052632,
-  157.900000, 149.380952, 143.615385,
-  146.250000, 153.550000, 162.000000,
-  178.478261, 180.878788, 184.357143
-)
+# vdolar_blue <- c(
+#   39.045455,  38.402500,  41.639474,
+#   44.274737,  46.095455,  45.063333,
+#   43.983333,  54.842857,  61.059524,
+#   65.545455,  66.750000,  72.368421,
+#   77.477273,  78.191667,  82.434211,
+#   101.087500, 126.236842, 125.857143,
+#   130.782609, 133.400000, 137.954545,
+#   170.619048, 160.400000, 153.052632,
+#   157.900000, 149.380952, 143.615385,
+#   146.250000, 153.550000, 162.000000,
+#   178.478261, 180.878788, 184.357143
+# )
 
 # vdolar_oficial <- c(
 #   38.430000,  39.428000,  42.542105,
@@ -207,18 +207,18 @@ vdolar_blue <- c(
 # }
 # #------------------------------------------------------------------------------
 
-drift_dolar_blue <- function(campos_monetarios) {
-  cat( "inicio drift_dolar_blue()\n")
-
-  dataset[tb_indices,
-          on = c(envg$PARAM$dataset_metadata$periodo),
-          (campos_monetarios) := .SD / i.dolar_blue,
-          .SDcols = campos_monetarios
-  ]
-
-  cat( "fin drift_dolar_blue()\n")
-}
-# #------------------------------------------------------------------------------
+# drift_dolar_blue <- function(campos_monetarios) {
+#   cat( "inicio drift_dolar_blue()\n")
+# 
+#   dataset[tb_indices,
+#           on = c(envg$PARAM$dataset_metadata$periodo),
+#           (campos_monetarios) := .SD / i.dolar_blue,
+#           .SDcols = campos_monetarios
+#   ]
+# 
+#   cat( "fin drift_dolar_blue()\n")
+# }
+# # #------------------------------------------------------------------------------
 # 
 # drift_deflacion <- function(campos_monetarios) {
 #   cat( "inicio drift_deflacion()\n")
@@ -297,18 +297,18 @@ envg$PARAM$dataset <- paste0( "./", envg$PARAM$input, "/dataset.csv.gz" )
 envg$PARAM$dataset_metadata <- read_yaml( paste0( "./", envg$PARAM$input, "/dataset_metadata.yml" ) )
 
 # tabla de indices financieros
- tb_indices <- as.data.table( list( 
+  tb_indices <- as.data.table( list( 
 #   # "IPC" = vIPC,
-    "dolar_blue" = vdolar_blue
+    # "dolar_blue" = vdolar_blue
 #   # "dolar_oficial" = vdolar_oficial,
      # "UVA" = vUVA
 #    "CER" = vCER
 #   # "IPIM" = vIPIM
 # "IMUV" = vIMUV
 #   "IMA" = vIMA
- )
- )
-tb_indices[[ envg$PARAM$dataset_metadata$periodo ]] <- vfoto_mes
+  )
+  )
+ tb_indices[[ envg$PARAM$dataset_metadata$periodo ]] <- vfoto_mes
 
 
 cat( "lectura del dataset\n")
@@ -335,7 +335,7 @@ switch(envg$PARAM$metodo,
        # "rank_simple"    = drift_rank_simple(campos_monetarios),
        # "rank_cero_fijo" = drift_rank_cero_fijo(campos_monetarios),
        # "deflacion"      = drift_deflacion(campos_monetarios),
-        "dolar_blue"     = drift_dolar_blue(campos_monetarios)
+       # "dolar_blue"     = drift_dolar_blue(campos_monetarios)
        # "dolar_oficial"  = drift_dolaroficial(campos_monetarios),
       #"UVA"            = drift_UVA(campos_monetarios)
        # "estandarizar"   = drift_estandarizar(campos_monetarios),
