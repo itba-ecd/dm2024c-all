@@ -33,7 +33,7 @@ options(error = function() {
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM <- list()
 
-PARAM$experimento <- "HT4220B"
+PARAM$experimento <- "HT4220C"
 
 PARAM$input$training <- c(202107) # los meses en los que vamos a entrenar
 
@@ -141,6 +141,7 @@ EstimarGanancia_lightgbm <- function(x) {
     boost_from_average = TRUE,
     feature_pre_filter = FALSE,
     verbosity = -100,
+    max_depth = -1,
     max_bin = 31, # por ahora, lo dejo fijo
     num_iterations = 9999, # valor grande, lo limita early_stopping_rounds
     force_row_wise = TRUE, # para evitar warning

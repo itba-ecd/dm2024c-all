@@ -10,14 +10,14 @@ require("rlist")
 
 # defino los parametros de la corrida, en una lista, la variable global  PARAM
 PARAM <- list()
-PARAM$experimento <- "KA4210B"
+PARAM$experimento <- "KA4210C"
 
 
 PARAM$input$training <- c(202107) # meses donde se entrena el modelo
 PARAM$input$future <- c(202109) # meses donde se aplica el modelo
 
 
-#PARAM$finalmodel$num_iterations <- 122
+#PARAM$finalm4444odel$num_iterations <- 122
 PARAM$finalmodel$learning_rate <- 0.06328507370662067
 PARAM$finalmodel$feature_fraction <- 0.688585891277383
 PARAM$finalmodel$min_data_in_leaf <- 3431
