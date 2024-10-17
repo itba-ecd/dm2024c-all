@@ -275,12 +275,12 @@ TS_strategy_base7 <- function( pinputexps )
 
   param_local$final_train$undersampling <- 1.0
   param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
-  param_local$final_train$training <- c(202105, 202104, 202103, 202102,
-    202101, 202012, 202011, 202010, 202009, 202008, 202007, 202006, 202005, 202404, 202002, 202001, 201912)
+  param_local$final_train$training <- c(202105, 202104, 202102, 202101,
+    202012, 202011, 202010, 202009, 202008, 202007, 202006, 202005, 2020404, 202003, 202002, 202001)
 
 
-  param_local$train$training <- c(202103, 202102, 202101,
-    202012, 202011, 202010, 202009, 202008, 202007, 202006, 202005, 202404, 202002, 202001, 201912, 201911, 201910)
+  param_local$train$training <- c(202102, 202101,
+    202012, 202011, 202010, 202009, 202008, 202007, 202006, 202005, 2020404, 202003, 202002, 202001, 201912, 201911)
   param_local$train$validation <- c(202104)
   param_local$train$testing <- c(202105)
 
@@ -442,7 +442,7 @@ wf_julio <- function( pnombrewf )
   ts7 <- TS_strategy_base7()
   ht <- HT_tuning_base()
 
-  fm <- FM_final_models_lightgbm( c(ht, ts7), ranks=c(1), qsemillas=15 )
+  fm <- FM_final_models_lightgbm( c(ht, ts7), ranks=c(1), qsemillas=10 )
   SC_scoring( c(fm, ts7) )
   EV_evaluate_conclase_gan()
 
