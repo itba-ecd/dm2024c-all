@@ -40,10 +40,10 @@ particionar <- function(
 # Aqui comienza el programa
 
 # Establezco el Working Directory
-setwd("~/buckets/b1/")
+setwd("D:/Academico/ITBA")
 
 # cargo los datos,  alternar comentario segun corresponda
-dataset <- fread("~/datasets/vivencial_dataset_pequeno.csv")
+dataset <- fread("D:/Academico/ITBA/datasets/vivencial_dataset_pequeno.csv")
 # dataset <- fread("~/datasets/conceptual_dataset_pequeno.csv")
 
 # trabajo solo con los datos con clase, es decir 202107

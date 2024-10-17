@@ -10,7 +10,7 @@ PARAM <- list()
 PARAM$semillas <- c(487789, 941683, 986903, 842483, 263213)
 
 # elegir SU dataset comentando/ descomentando
-PARAM$dataset_nom <- "~/datasets/vivencial_dataset_pequeno.csv"
+PARAM$dataset_nom <- "D:/Academico/ITBA/datasets/vivencial_dataset_pequeno.csv"
 # PARAM$dataset_nom <- "~/datasets/conceptual_dataset_pequeno.csv"
 
 PARAM$training_pct <- 70L  # entre  1L y 99L 
@@ -95,7 +95,7 @@ ArbolEstimarGanancia <- function(semilla, param_basicos) {
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("D:/Academico/ITBA") # Establezco el Working Directory
 
 # cargo los datos
 dataset <- fread(PARAM$dataset_nom)
@@ -110,7 +110,7 @@ salidas <- mcmapply(ArbolEstimarGanancia,
   PARAM$semillas, # paso el vector de semillas
   MoreArgs = list(PARAM), # aqui paso el segundo parametro
   SIMPLIFY = FALSE,
-  mc.cores = detectCores()
+  mc.cores = 1
 )
 
 # muestro la lista de las salidas en testing
