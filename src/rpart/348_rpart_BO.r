@@ -139,7 +139,7 @@ ArbolesCrossValidation <- function(param_rpart, qfolds, pagrupa, semilla) {
     seq(qfolds), # 1 2 3 4 5
     MoreArgs = list(param_rpart),
     SIMPLIFY = FALSE,
-    mc.cores = detectCores()
+    mc.cores = 1
   )
 
   dataset[, fold := NULL]
@@ -193,10 +193,10 @@ EstimarGanancia <- function(x) {
 # Aqui empieza el programa
 
 # Establezco el Working Directory
-setwd("~/buckets/b1/")
+setwd("D:/Academico/ITBA/")
 
 #cargo miAmbiente
-miAmbiente <- read_yaml( "~/buckets/b1/miAmbiente.yml" )
+miAmbiente <- read_yaml( "D:/Academico/ITBA/miAmbiente.yml" )
 
 
 # cargo dataset
@@ -273,10 +273,4 @@ if (!file.exists(archivo_BO)) {
 # retomo en caso que ya exista
 
 
-# copio
-system( "~/install/repobrutalcopy.sh" )
-
-# apago la virtual machine  para que no facture Google Cloud
-# Give them nothing, but take from them everything.
-system( "~/install/apagar-vm.sh" )
 
