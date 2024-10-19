@@ -276,9 +276,10 @@ TS_strategy_base9 <- function( pinputexps )
     202101, 202012, 202011)
 
 
-  param_local$train$training <- c(202104,202103, 202102, 202101,202012, 202011, 202010,202009,202008)
-  param_local$train$validation <- c(202105)
-  param_local$train$testing <- c(202106,202107)
+  param_local$train$training <- c(202105, 202104, 202103, 202102, 202101,
+    202012, 202011, 202010, 202009)
+  param_local$train$validation <- c(202106)
+  param_local$train$testing <- c(202107)
 
   # Atencion  0.2  de  undersampling de la clase mayoritaria,  los CONTINUA
   # 1.0 significa NO undersampling
@@ -428,7 +429,7 @@ wf_septiembre <- function( pnombrewf )
   DT_incorporar_dataset_competencia2024()
   CA_catastrophe_base( metodo="MachineLearning")
   FEintra_manual_base()
-  DR_drifting_base(metodo="rank_cero_fijo")
+  DR_drifting_base(metodo="rank_cero_fijo")#modificacion de la variable por metodo de drifting
   FEhist_base()
   FErf_attributes_base()
   #CN_canaritos_asesinos_base(ratio=0.2, desvio=4.0)

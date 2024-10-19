@@ -276,9 +276,9 @@ TS_strategy_base9 <- function( pinputexps )
     202101, 202012, 202011)
 
 
-  param_local$train$training <- c(202104,202103, 202102, 202101,202012, 202011, 202010,202009,202008)
-  param_local$train$validation <- c(202105)
-  param_local$train$testing <- c(202106,202107)
+  param_local$train$training <- c(202101,202012, 202011, 202010,202009,202008,202007,202002,202001)
+  param_local$train$validation <- c(202002,202003,202104)
+  param_local$train$testing <- c(202005,202106,202107)
 
   # Atencion  0.2  de  undersampling de la clase mayoritaria,  los CONTINUA
   # 1.0 significa NO undersampling
@@ -428,7 +428,7 @@ wf_septiembre <- function( pnombrewf )
   DT_incorporar_dataset_competencia2024()
   CA_catastrophe_base( metodo="MachineLearning")
   FEintra_manual_base()
-  DR_drifting_base(metodo="rank_cero_fijo")
+  DR_drifting_base(metodo="rank_cero_fijo")#modificacion de la variable por metodo de drifting
   FEhist_base()
   FErf_attributes_base()
   #CN_canaritos_asesinos_base(ratio=0.2, desvio=4.0)
@@ -436,7 +436,7 @@ wf_septiembre <- function( pnombrewf )
   ts9 <- TS_strategy_base9()
   ht <- HT_tuning_base()
 
-  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=10 )
+  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=15 )
   SC_scoring( c(fm, ts9) )
   KA_evaluate_kaggle()
 
