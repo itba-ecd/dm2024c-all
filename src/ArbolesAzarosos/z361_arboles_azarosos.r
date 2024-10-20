@@ -22,9 +22,9 @@ PARAM$experimento <- 3610
 #  cargue aqui los hiperparametros elegidos
 PARAM$rpart <- data.table( 
   "cp" = -1,
-  "minsplit" = 50,
-  "minbucket" = 20,
-  "maxdepth" = 6
+  "minsplit" = 600,
+  "minbucket" = 300,
+  "maxdepth" = 5
 )
 
 # parametros  arbol
@@ -179,7 +179,4 @@ for( icorrida in seq(nrow(PARAM$rpart)) ){
 # copio
 system( "~/install/repobrutalcopy.sh" )
 
-# apago la virtual machine  para que no facture Google Cloud
-# Give them nothing, but take from them everything.
-system( "~/install/apagar-vm.sh" )
 
