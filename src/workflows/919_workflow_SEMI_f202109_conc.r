@@ -275,7 +275,8 @@ TS_strategy_base9 <- function( pinputexps )
     202107, 202106, 202105, 202104, 202103, 202102, 202101, 
     202012, 202011, 202010, 202009, 202008, 202007, 
     # 202006  Excluyo por variables rotas
-    202005, 202004, 202003, 202002, 202001,
+    202005,  202004,  202003, 
+    202002, 202001,
     201912, 201911,
     # 201910 Excluyo por variables rotas
     201909, 201908, 201907, 201906,
@@ -285,10 +286,14 @@ TS_strategy_base9 <- function( pinputexps )
 
 
   param_local$train$training <- c(
-    202105, 202104, 202103, 202102, 202101, 
+    # 202105, 
+   # 202104, 
+   202103, 202102, 
+    202101, 
     202012, 202011, 202010, 202009, 202008, 202007,
     # 202006  Excluyo por variables rotas
-    202005, 202004, 202003, 202002, 202001,
+    202005, 202004, 202003, 
+    202002, 202001,
     201912, 201911,
     # 201910 Excluyo por variables rotas
     201909, 201908, 201907, 201906,
@@ -296,8 +301,8 @@ TS_strategy_base9 <- function( pinputexps )
     201904, 201903, 201902, 201901
     )
 
-  param_local$train$validation <- c(202106)
-  param_local$train$testing <- c(202107)
+  param_local$train$validation <- c( 202104, 202105)
+  param_local$train$testing <- c( 202106, 202107)
 
 
   # Atencion  0.2  de  undersampling de la clase mayoritaria,  los CONTINUA
@@ -455,9 +460,9 @@ wf_SEMI_sep <- function( pnombrewf )
   param_local <- exp_wf_init( pnombrewf ) # linea fija
 
   DT_incorporar_dataset_competencia2024()
-  CA_catastrophe_base( metodo="MICE")
+  CA_catastrophe_base( metodo="MachineLearning")
   FEintra_manual_base()
-  DR_drifting_base(metodo="UVA")
+  DR_drifting_base(metodo="dolar_oficial")
   FEhist_base()
   FErf_attributes_base()
   #CN_canaritos_asesinos_base(ratio=0.2, desvio=4.0)
