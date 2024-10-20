@@ -10,7 +10,7 @@ require("rlist")
 
 # defino los parametros de la corrida, en una lista, la variable global  PARAM
 PARAM <- list()
-PARAM$experimento <- "KA4210G"
+PARAM$experimento <- "KA4210H"
 
 
 PARAM$input$training <- c(202107) # meses donde se entrena el modelo
@@ -25,15 +25,20 @@ PARAM$finalmodel$num_iterations <- 1000
 
 PARAM$finalmodel$max_bin <- 31
 
-PARAM$finalmodel$learning_rate <- 0.065087
-PARAM$finalmodel$num_leaves <- 862
-PARAM$finalmodel$feature_fraction <- 0.839746
-PARAM$finalmodel$min_data_in_leaf <- 41
-PARAM$finalmodel$envios <- 11125
-PARAM$finalmodel$bagging_fraction <- 0.998503
-PARAM$finalmodel$bagging_freq <- 11
-PARAM$finalmodel$lambda_l1 <- 1.518010
-PARAM$finalmodel$lambda_l2 <- 69.244345
+PARAM$finalmodel$learning_rate <- 0.222172
+PARAM$finalmodel$num_leaves <- 11005L
+PARAM$finalmodel$feature_fraction <- 0.496995
+PARAM$finalmodel$min_data_in_leaf <- 1056L
+PARAM$finalmodel$envios <- 11236L
+PARAM$finalmodel$max_depth <- 25L
+PARAM$finalmodel$lambda_l1 <- 2.077652
+PARAM$finalmodel$lambda_l2 <- 940.371635
+PARAM$finalmodel$bagging_fraction <- 0.886560
+PARAM$finalmodel$bagging_freq <- 347L
+PARAM$finalmodel$min_child_samples <- 325L
+PARAM$finalmodel$subsample <- 0.873705
+PARAM$finalmodel$colsample_bytree <- 0.266124
+PARAM$finalmodel$min_gain_to_split <- 0.063780
 
 #------------------------------------------------------------------------------
 # graba a un archivo los componentes de lista
@@ -174,7 +179,7 @@ setorder(tb_entrega, -prob)
 # genero archivos con los  "envios" mejores
 # suba TODOS los archivos a Kaggle
 
-cortes <- seq(9000, 13500, by = 500)
+cortes <- seq(10000, 13000, by = 1000)
 for (envios in cortes) {
   tb_entrega[, Predicted := 0L]
   tb_entrega[1:envios, Predicted := 1L]
